@@ -28,10 +28,13 @@
 	exit 0
 }
 
+# TODO(mattbrown) I removed this as it was not actually invoking a new shell
+# that sourced this command. Instead I solved this by putting an alias in
+# ~/.bash_profile for `alias git-sh='source $(which git-sh)'`
 # we expect to be sourced into an interactive shell. when executed as a
 # command, kick off a new shell and source us.
-[ "$0" = 'bash' ] ||
-exec /usr/bin/env bash --rcfile "$0" "$@"
+#[ "$0" = 'bash' ] ||
+#exec /usr/bin/env bash --rcfile "$0" "$@"
 
 # source the user's .bashrc file
 [ -r ~/.bashrc ] && {
